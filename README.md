@@ -24,9 +24,9 @@ MONGO_DB_AUTHENTICATION_DATABASE=admin
 ## Công nghệ sử dụng
 * BE: Laravel, Flask
 * FE: ReactJs
-* Databse: MongDB
+* Database: MongoDB
 
-## Driver MongDB for Laravel
+## Driver MongoDB for Laravel
 * PECL https://pecl.php.net/package/mongodb
 * Github release: https://github.com/mongodb/mongo-php-driver/releases/
 
