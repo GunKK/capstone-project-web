@@ -1,1 +1,4 @@
-/flask
+# /flask
+/flask/env
+/flask/static/dataset
+/flask/Models/*
