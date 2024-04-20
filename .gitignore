@@ -1,4 +1,5 @@
 # /flask
 /flask/env
 /flask/static/dataset
+/flask/static/upload
 /flask/Models/*

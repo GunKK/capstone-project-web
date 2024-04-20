@@ -8,21 +8,42 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Model, load_model, save_model
 import keras.backend as K
+import pydicom
+from PIL import Image
+
 IMG_HEIGHT=256
 IMG_WIDTH=256
 
 model = load_model('./Models/unet_model.h5', compile=False)
 
-def load_images(directory):
-    images = []
-    masks = glob(directory+'/*/*_mask.tif')
+# def load_images(directory):
+#     images = []
+#     masks = glob(directory+'/*/*_mask.tif')
 
-    for i in masks:
-        images.append(i.replace('_mask',''))
-    return(images, masks)
+#     for i in masks:
+#         images.append(i.replace('_mask',''))
+    # return(images, masks)
 
-data_path = './static/dataset/kaggle_3m'
-images, masks = load_images(data_path)
+# data_path = './static/dataset/kaggle_3m'
+# images, masks = load_images(data_path)
+
+def flatten_dicom_file(dicom_path):
+    # Load DICOM file
+    ds = pydicom.dcmread(dicom_path)
+
+    # Convert DICOM pixel data to a NumPy array
+    pixel_array = ds.pixel_array
+
+    # Convert NumPy array to PIL Image
+    image = Image.fromarray(pixel_array)
+
+    # Define output file path
+    output_file = os.path.join('static/upload', f"{os.path.basename(dicom_path)}.tif")
+
+    # Save the image as TIF
+    image.save(output_file)
+
+    return output_file
 
 def predict_tumor(path):
     img = cv2.imread(path)

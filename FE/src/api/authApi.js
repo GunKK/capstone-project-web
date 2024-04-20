@@ -19,7 +19,7 @@ const authApi = {
   },
   logout: () => {
     const url = `auth/logout`;
-    return axiosClient.get(url);
+    return axiosClient.delete(url);
   },
 };
 

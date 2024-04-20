@@ -1,8 +1,8 @@
 export const roleEnum = {
   Admin: 1,
   Supervisor: 2,
-  Employee: 3,
-  Customer: 4
+  Doctor: 3,
+  Patient: 4
 }
 
 export const routes = [
@@ -10,42 +10,17 @@ export const routes = [
     title: 'Tổng quan',
     path: '/admin',
     exactly: true,
-    permissions: [roleEnum.Employee, roleEnum.Admin]
+    permissions: [roleEnum.Doctor, roleEnum.Supervisor, roleEnum.Admin]
 
   },
   {
-    title: 'Quản lý sách',
-    path: '/admin/book',
-    subMenu: [
-       {
-        title: 'Thêm sách mới',
-        path: '/admin/book/add',
-       },
-       {
-        title: 'Quản lý tác giả',
-        path: '/admin/author',
-      },
-    ],
-    permissions: [roleEnum.Employee, roleEnum.Admin]
-  },
-  {
-    title: 'Quản lý đơn hàng',
-    path: '/admin/order',
-    permissions: [roleEnum.Employee, roleEnum.Admin]
-  },
-  {
-    title: 'Mã giảm giá',
-    path: '/admin/voucher',
-    permissions: [roleEnum.Employee, roleEnum.Admin]
-  },
-  {
     title: 'Khách hàng',
-    path: '/admin/customer',
-    permissions: [roleEnum.Employee, roleEnum.Admin]
+    path: '/admin/Patient',
+    permissions: [roleEnum.Doctor, roleEnum.Supervisor, roleEnum.Admin]
   },
   {
     title: 'Nhân viên',
-    path: '/admin/Employee',
+    path: '/admin/Doctor',
     permissions: [roleEnum.Admin]
   },
 ];

@@ -27,7 +27,7 @@ axiosClient.interceptors.request.use(async (config) => {
     if (decodedToken.exp < date.getTime() / 1000) {
       try {
         const res = await jwtAxios.post(`auth/refresh-token/`);
-        const newAccessToken = res.data.token
+        const newAccessToken = res.token
         if (newAccessToken) {
           localStorage.setItem('accessToken', newAccessToken)
           config.headers.Authorization = `Bearer ${newAccessToken}`;

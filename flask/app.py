@@ -16,12 +16,12 @@ UPLOAD_PATH = os.path.join(BASE_PATH, 'static/upload')
 
 @app.route("/predict", methods=['POST'])
 def make_prediction():
-    # file = request.files['file']
-    # filename = file.filename
-    filename = 'tumor1.tif'
+    file = request.files['file']
+    filename = file.filename
     path = os.path.join(UPLOAD_PATH, filename)
-    # file.save(path)
-    resp = Pre.predict_tumor(path)
+    file.save(path)
+    image = Pre.flatten_dicom_file(path)
+    resp = Pre.predict_tumor(image)
     return json.dumps(resp)
 
 if __name__ == "__main__":

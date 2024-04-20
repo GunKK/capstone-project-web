@@ -16,6 +16,12 @@ DB_USERNAME=
 DB_PASSWORD=
 MONGO_DB_AUTHENTICATION_DATABASE=admin
 ```
+* install package
+```
+composer install
+yarn install
+pip -r requirements.txt
+```
 
 ## Kiến trúc hệ thống
 

@@ -65,10 +65,10 @@ function App() {
                     
                 </Route>
 
-                {/* route customer */}
+                {/* route patient */}
                 { console.log(currentUser)}
                 {currentUser && currentUser.role !== -1 && (
-                    <Route path="/" element={<ProtectedRoute isAllowed={currentUser.role === roleEnum.Customer} />}>
+                    <Route path="/" element={<ProtectedRoute isAllowed={currentUser.role === roleEnum.Patient} />}>
                         <Route element={<DefaultLayout />}>
                             <Route element={<AccountLayout />}>
                                 <Route path="tai-khoan" element={<Profile />} />
@@ -78,7 +78,7 @@ function App() {
                 )}
 
                 {currentUser && currentUser.role !== -1 && (
-                    <Route path="/admin" element={<ProtectedRoute isAllowed={currentUser.role <= roleEnum.Employee} />}>
+                    <Route path="/admin" element={<ProtectedRoute isAllowed={currentUser.role <= roleEnum.Doctor} />}>
                         <Route element={<AdminLayout />}>
                             
                         </Route>

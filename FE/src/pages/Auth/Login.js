@@ -35,8 +35,8 @@ function Login() {
       const res = await authApi.login({email, password})
       setLoading(false)
       console.log(res);
-      const { accessToken, user } = res
-      localStorage.setItem('accessToken', accessToken)
+      const { token, user } = res
+      localStorage.setItem('accessToken', token)
 
       const { id, name, role } = user // Cannot access 'email' before initialization
       const avatar = 'https://gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9?size=200';
