@@ -10,6 +10,14 @@ const axiosClient = axios.create({
   withCredentials: true,
 })
 
+const axiosUploadFile = axios.create({
+  baseURL: process.env.REACT_APP_SERVER_URL,
+  headers: {
+    'Content-Type':'multipart/form-data'
+  },
+  withCredentials: true,
+})
+
 const jwtAxios = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL,
   headers: {

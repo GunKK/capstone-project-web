@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import DefaultLayout from './layouts/DefaultLayout';
 import AdminLayout from './layouts/AdminLayout';
 import AccountLayout from './layouts/AccountLayout';
+import DoctorLayout from './layouts/DoctorLayout';
 
 import Home from './pages/Home';
 
@@ -27,6 +28,7 @@ import { login, logout } from './redux/actions/auth';
 
 import { roleEnum } from './layouts/components/SideBar/routes';
 
+import UploadFile from './pages/Doctor/UploadFile'
 function App() {
     const currentUser = useSelector((state) => state.auth);
 
@@ -78,9 +80,11 @@ function App() {
                 )}
 
                 {currentUser && currentUser.role !== -1 && (
-                    <Route path="/admin" element={<ProtectedRoute isAllowed={currentUser.role <= roleEnum.Doctor} />}>
-                        <Route element={<AdminLayout />}>
-                            
+                    <Route path="/doctor" element={<ProtectedRoute isAllowed={currentUser.role === roleEnum.Doctor} />}>
+                        <Route element={<DefaultLayout />}>
+                            <Route element={<DoctorLayout />}>
+                                <Route path="upload-file" element={<UploadFile />} />
+                            </Route>
                         </Route>
                     </Route>
                 )}

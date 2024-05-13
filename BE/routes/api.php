@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\v1\AuthController;
+use App\Http\Controllers\api\v1\SegmentationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,12 @@ Route::group([
         Route::delete('logout', [AuthController::class, 'logout']);
         Route::post('refresh', [AuthController::class, 'refresh']);
         Route::get('me', [AuthController::class, 'me']);
+    });
+    Route::group([
+        'middleware' => 'auth:api',
+        'prefix' => 'doctor'
+    ], function () {
+        Route::post('predict', [SegmentationController::class, 'predict']);
     });
 });
 

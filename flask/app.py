@@ -16,7 +16,7 @@ UPLOAD_PATH = os.path.join(BASE_PATH, 'static/upload')
 
 @app.route("/predict", methods=['POST'])
 def make_prediction():
-    file = request.files['file']
+    file = request.files['dicom_file']
     filename = file.filename
     path = os.path.join(UPLOAD_PATH, filename)
     file.save(path)

@@ -53,4 +53,5 @@ def predict_tumor(path):
     pred = model.predict(img)
     value=np.max(np.squeeze(pred > 0.5).astype(np.uint8))
     tumor = 'Tumor' if value > 0 else 'No Tumor'
-    return { 'predict': tumor }
+    image_path = path
+    return { 'predict': tumor, 'image_path': image_path }
