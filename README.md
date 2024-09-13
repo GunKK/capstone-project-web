@@ -19,8 +19,14 @@ MONGO_DB_AUTHENTICATION_DATABASE=admin
 * install package
 ```
 composer install
+php artisan jwt:generate or php artisan jwt:secret
 yarn install
 pip -r requirements.txt
+```
+
+* config FE `.env`
+```
+REACT_APP_SERVER_URL=endpoint
 ```
 
 ## Kiến trúc hệ thống

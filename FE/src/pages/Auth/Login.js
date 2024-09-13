@@ -47,8 +47,8 @@ function Login() {
     } catch (error) {
       setLoading(false)
       console.log(error)
-      console.log(error.response.data.error)
-      toast.error(error.response.data.error, { autoClose: 2000 })
+      console.log(error.response?.data?.error)
+      toast.error(error.response?.data?.error, { autoClose: 2000 })
     }
   }
   
